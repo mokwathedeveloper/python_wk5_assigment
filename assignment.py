@@ -22,7 +22,7 @@ class Smartphone:
         # It checks if the battery is sufficient to make a call.
         if self.battery > 10:
             self.battery -= 10  # Decrease battery by 10% after a call
-            print(f"Calling {contact_name}... Your battery is now {self.battery}%.")
+            print(f"Calling {contact_name}... Your battery is now {self.battery}%")
         else:
             print("Battery too low to make a call. Please charge your phone.")
 
@@ -31,14 +31,43 @@ class Smartphone:
         self.battery = 100  # Reset battery level to 100%
         print(f"Charging complete. Your {self.brand} {self.model} is fully charged.")
 
-# --- Example Usage ---
-# We create an instance (object) of the Smartphone class.
-my_phone = Smartphone("Samsung", "Galaxy S23")
+# --- Inheritance and Encapsulation ---
 
-# We can access the attributes of the object.
+# We create a `GamingSmartphone` that inherits from `Smartphone`.
+# This is an example of Inheritance, where a new class derives properties from an existing class.
+class GamingSmartphone(Smartphone):
+    def __init__(self, brand, model, battery=100, cooling_system="Active Cooling"):
+        # `super()` calls the constructor of the parent class (`Smartphone`).
+        super().__init__(brand, model, battery)
+        # This is a new attribute specific to the GamingSmartphone.
+        self.cooling_system = cooling_system
+        # This attribute is "private" to demonstrate encapsulation.
+        self._is_gaming_mode = False
+
+    # This method is specific to the GamingSmartphone.
+    def activate_gaming_mode(self):
+        self._is_gaming_mode = True
+        print(f"Gaming mode activated! {self.cooling_system} is now running.")
+
+    # This method overrides the parent's `make_call` method.
+    def make_call(self, contact_name):
+        # It first checks if gaming mode is on.
+        if self._is_gaming_mode:
+            print("Cannot make calls while in gaming mode.")
+        else:
+            # If not in gaming mode, it uses the parent's `make_call` logic.
+            super().make_call(contact_name)
+
+# --- Example Usage ---
+print("\n--- Smartphone Example ---")
+my_phone = Smartphone("Samsung", "Galaxy S23")
 print(f"My new phone is a {my_phone.brand} {my_phone.model}.")
 print(f"Initial battery level: {my_phone.battery}%")
-
-# We can call the methods of the object.
 my_phone.make_call("Mokwa")
 my_phone.charge_battery()
+
+print("\n--- Gaming Smartphone Example ---")
+my_gaming_phone = GamingSmartphone("Asus", "ROG Phone 8", battery=80)
+print(f"My new gaming phone is a {my_gaming_phone.brand} {my_gaming_phone.model}.")
+my_gaming_phone.activate_gaming_mode()
+my_gaming_phone.make_call("Friend") # This call will be blocked
