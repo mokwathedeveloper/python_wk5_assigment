@@ -58,6 +58,21 @@ class GamingSmartphone(Smartphone):
             # If not in gaming mode, it uses the parent's `make_call` logic.
             super().make_call(contact_name)
 
+# --- Activity 2: Polymorphism Challenge! ---
+
+# Polymorphism allows objects of different classes to respond to the same method call.
+# Here, both `Car` and `Plane` have a `move()` method, but they behave differently.
+
+class Car:
+    def move(self):
+        # The car's implementation of the `move` method.
+        print("Driving ☁")
+
+class Plane:
+    def move(self):
+        # The plane's implementation of the `move` method.
+        print("Flying ✈")
+
 # --- Example Usage ---
 print("\n--- Smartphone Example ---")
 my_phone = Smartphone("Samsung", "Galaxy S23")
@@ -71,3 +86,13 @@ my_gaming_phone = GamingSmartphone("Asus", "ROG Phone 8", battery=80)
 print(f"My new gaming phone is a {my_gaming_phone.brand} {my_gaming_phone.model}.")
 my_gaming_phone.activate_gaming_mode()
 my_gaming_phone.make_call("Friend") # This call will be blocked
+
+print("\n--- Polymorphism Example ---")
+# Create instances of Car and Plane.
+my_car = Car()
+my_plane = Plane()
+
+# Call the `move` method on both objects.
+# Notice how the same method name produces different results.
+my_car.move()
+my_plane.move()
