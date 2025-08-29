@@ -12,7 +12,7 @@ To run this project, you need Python installed on your system. No external libra
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/mokwathedeveloper/python_wk5_assigment.git
    ```
 
 2. **Navigate to the project directory:**
