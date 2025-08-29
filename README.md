@@ -17,7 +17,7 @@ To run this project, you need Python installed on your system. No external libra
 
 2. **Navigate to the project directory:**
    ```bash
-   cd oop-assignment
+   cd python_wk5_assigment
    ```
 
 ## Usage
